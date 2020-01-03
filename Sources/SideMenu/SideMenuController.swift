@@ -248,11 +248,11 @@ open class SideMenuController: UIViewController {
 
         if shouldCallDelegate {
             if reveal {
-                if let delegate = self.delegate, !delegate?.sideMenuControllerShowldRevealMenu(self) {
+                if let delegate = self.delegate, !delegate.sideMenuControllerShowldRevealMenu(self) {
                     return
                 }
             } else {
-                if let delegate = self.delegate, !delegate?.sideMenuControllerShowldHideMenu(self) {
+                if let delegate = self.delegate, !delegate.sideMenuControllerShowldHideMenu(self) {
                     return
                 }
             }
