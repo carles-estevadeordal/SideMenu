@@ -374,13 +374,6 @@ open class SideMenuController: UIViewController {
         contentContainerOverlay = overlay
         contentContainerOverlay?.accessibilityIdentifier = "ContentShadowOverlay"
     }
-    
-    @objc func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive press: UIPress) -> Bool {
-        if !(delegate?.sideMenuControllerShowldHideMenu(self) ?? true) {
-            return false
-        }
-        return true
-    }
 
     @objc private func handleTapGesture(_ tap: UITapGestureRecognizer) {
         hideMenu()
@@ -762,6 +755,11 @@ extension SideMenuController: UIGestureRecognizerDelegate {
     }
 
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        
+        if !(delegate?.sideMenuControllerShowldHideMenu(self) ?? true) {
+            return false
+        }
+        
         if let velocity = panGestureRecognizer?.velocity(in: view) {
             return isValidateHorizontalMovement(for: velocity)
         }
