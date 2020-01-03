@@ -247,6 +247,16 @@ open class SideMenuController: UIViewController {
         menuViewController.beginAppearanceTransition(true, animated: true)
 
         if shouldCallDelegate {
+            if reveal {
+                if !(delegate?.sideMenuControllerShowldRevealMenu(self) ?? true) {
+                    return
+                }
+            } else {
+                if !(delegate?.sideMenuControllerShowldHideMenu(self) ?? true) {
+                    return
+                }
+            }
+            
             reveal ? delegate?.sideMenuControllerWillRevealMenu(self) : delegate?.sideMenuControllerWillHideMenu(self)
         }
 

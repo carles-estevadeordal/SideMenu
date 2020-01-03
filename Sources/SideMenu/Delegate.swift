@@ -12,6 +12,19 @@ import UIKit
 // Delegate Methods
 public protocol SideMenuControllerDelegate: class {
 
+    // MARK: Should Transition
+
+    /// Side menu is going to reveal.
+    ///
+    /// - Parameter sideMenu: The side menu
+    func sideMenuControllerShowldRevealMenu(_ sideMenuController: SideMenuController) -> Bool
+
+    /// Side menu is going to hide.
+    ///
+    /// - Parameter sideMenu: The side menu
+    func sideMenuControllerShowldHideMenu(_ sideMenuController: SideMenuController) -> Bool
+    
+    
     // MARK: Animation
 
     /// Called to allow the delegate to return a non-interactive animator object for use during view controller transitions.
