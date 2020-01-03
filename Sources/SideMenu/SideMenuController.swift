@@ -248,11 +248,11 @@ open class SideMenuController: UIViewController {
 
         if shouldCallDelegate {
             if reveal {
-                if !(delegate?.sideMenuControllerShowldRevealMenu(self) ?? true) {
+                if let delegate = self.delegate, !delegate?.sideMenuControllerShowldRevealMenu(self) {
                     return
                 }
             } else {
-                if !(delegate?.sideMenuControllerShowldHideMenu(self) ?? true) {
+                if let delegate = self.delegate, !delegate?.sideMenuControllerShowldHideMenu(self) {
                     return
                 }
             }
@@ -756,7 +756,7 @@ extension SideMenuController: UIGestureRecognizerDelegate {
 
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         
-        if !(delegate?.sideMenuControllerShowldHideMenu(self) ?? true) {
+        if let delegate = self.delegate, !delegate.sideMenuControllerShowldHideMenu(self) {
             return false
         }
         
